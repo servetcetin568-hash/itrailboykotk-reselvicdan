@@ -1,0 +1,446 @@
+HTML
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Boykot Farkındalık Platformu</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#0d0d0d;
+color:white;
+}
+
+/* kayan şerit */
+
+.ticker{
+background:#8b0000;
+overflow:hidden;
+white-space:nowrap;
+padding:10px;
+}
+
+.ticker span{
+display:inline-block;
+padding-left:100%;
+animation:ticker 18s linear infinite;
+font-weight:bold;
+}
+
+@keyframes ticker{
+0%{transform:translateX(0)}
+100%{transform:translateX(-100%)}
+}
+
+/* header */
+
+header{
+background:#000;
+padding:20px;
+display:flex;
+align-items:center;
+}
+
+.menuBtn{
+font-size:26px;
+cursor:pointer;
+margin-right:20px;
+}
+
+header h1{
+color:#ff4444;
+font-size:22px;
+}
+
+/* sidebar */
+
+.sidebar{
+position:fixed;
+left:-250px;
+top:0;
+width:250px;
+height:100%;
+background:#000;
+padding-top:60px;
+transition:0.3s;
+z-index:10;
+}
+
+.sidebar a{
+display:block;
+padding:15px;
+color:white;
+text-decoration:none;
+border-bottom:1px solid #222;
+}
+
+.sidebar a:hover{
+background:#111;
+}
+
+.container{
+padding:20px;
+max-width:1000px;
+margin:auto;
+}
+
+.card{
+background:#1a1a1a;
+padding:20px;
+margin-bottom:20px;
+border-left:4px solid red;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-bottom:20px;
+background:#1a1a1a;
+border:none;
+color:white;
+border-radius:5px;
+}
+
+button{
+padding:10px 20px;
+background:#ff4444;
+border:none;
+color:white;
+cursor:pointer;
+border-radius:4px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:#1a1a1a;
+}
+
+th,td{
+padding:10px;
+border:1px solid #333;
+}
+
+th{
+background:#111;
+}
+
+.footer{
+text-align:center;
+padding:30px;
+background:#000;
+margin-top:40px;
+}
+
+.highlight{
+color:#ff4444;
+font-weight:bold;
+font-size:18px;
+}
+
+.botResult{
+background:#111;
+padding:15px;
+border-left:4px solid red;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="ticker">
+<span>
+Boykot edilen markalar: Coca Cola • Pepsi • Starbucks • McDonald's • Burger King • Nestle • Nike • Apple • Microsoft • Google • Amazon • Intel • HP • KFC • Domino's • Pizza Hut • Ariel • Fairy • Pantene • Dove
+</span>
+</div>
+
+<header>
+
+<div class="menuBtn" onclick="toggleMenu()">☰</div>
+
+<h1>Filistin Farkındalık Platformu</h1>
+
+</header>
+
+<div class="sidebar" id="menu">
+
+<a href="#" onclick="showPage('home')">Ana Sayfa</a>
+<a href="#" onclick="showPage('boykot')">Boykot Listesi</a>
+<a href="#" onclick="showPage('yerli')">Türk Alternatifler</a>
+<a href="#" onclick="showPage('bot')">Boykot Botu</a>
+<a href="#" onclick="showPage('about')">Hakkında</a>
+
+</div>
+
+<div class="container">
+
+<!-- ANA SAYFA -->
+
+<div id="home">
+
+<div class="card">
+
+<h2>Farkındalık</h2>
+
+<p>
+Zulüm karşısında tarafsızlık yoktur.
+Herkes yaptığı tercihlerle bir tarafı güçlendirir.
+</p>
+
+<p>
+Tüketim bir güçtür. Paranın nereye gittiği önemlidir.
+Bilinçli tüketim insanların elindeki en büyük protesto araçlarından biridir.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>Bilgilendirme</h2>
+
+<p>
+Bir yerde adaletsizlik varsa ve insanlar buna karşı hiçbir şey yapmıyorsa,
+o adaletsizlik büyümeye devam eder.
+</p>
+
+<p>
+Tarih boyunca zulümler sadece zalimler yüzünden değil,
+onlara sessiz kalanlar yüzünden de devam etmiştir.
+</p>
+
+<p>
+Bu platform insanları bilinçlendirmek için hazırlanmıştır.
+</p>
+
+</div>
+
+</div>
+
+<!-- BOYKOT LİSTESİ -->
+
+<div id="boykot" style="display:none">
+
+<input type="text" id="search" placeholder="Marka ara..." onkeyup="searchTable()">
+
+<table id="boykotTable">
+
+<thead>
+<tr>
+<th>Sektör</th>
+<th>Marka</th>
+<th>Menşei</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr><td>İçecek</td><td>Coca Cola</td><td>ABD</td></tr>
+<tr><td>İçecek</td><td>Pepsi</td><td>ABD</td></tr>
+<tr><td>İçecek</td><td>Starbucks</td><td>ABD</td></tr>
+
+<tr><td>Gıda</td><td>McDonald's</td><td>ABD</td></tr>
+<tr><td>Gıda</td><td>Burger King</td><td>ABD</td></tr>
+<tr><td>Gıda</td><td>KFC</td><td>ABD</td></tr>
+<tr><td>Gıda</td><td>Domino's Pizza</td><td>ABD</td></tr>
+<tr><td>Gıda</td><td>Pizza Hut</td><td>ABD</td></tr>
+
+<tr><td>Teknoloji</td><td>Apple</td><td>ABD</td></tr>
+<tr><td>Teknoloji</td><td>Microsoft</td><td>ABD</td></tr>
+<tr><td>Teknoloji</td><td>Google</td><td>ABD</td></tr>
+<tr><td>Teknoloji</td><td>Amazon</td><td>ABD</td></tr>
+<tr><td>Teknoloji</td><td>Intel</td><td>ABD</td></tr>
+<tr><td>Teknoloji</td><td>HP</td><td>ABD</td></tr>
+
+<tr><td>Kozmetik</td><td>Dove</td><td>Unilever</td></tr>
+<tr><td>Kozmetik</td><td>Pantene</td><td>ABD</td></tr>
+<tr><td>Kozmetik</td><td>Ariel</td><td>ABD</td></tr>
+<tr><td>Kozmetik</td><td>Fairy</td><td>ABD</td></tr>
+
+<tr><td>Giyim</td><td>Nike</td><td>ABD</td></tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- TÜRK ALTERNATİFLER -->
+
+<div id="yerli" style="display:none">
+
+<div class="card">
+
+<h2>Türk Alternatif Ürünler</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Boykot Edilen Marka</th>
+<th>Türk Alternatif</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr><td>Coca Cola</td><td>Uludağ Gazoz</td></tr>
+<tr><td>Pepsi</td><td>Niğde Gazozu</td></tr>
+<tr><td>Starbucks</td><td>Kahve Dünyası</td></tr>
+
+<tr><td>McDonald's</td><td>Usta Dönerci</td></tr>
+<tr><td>Burger King</td><td>Kasap Döner</td></tr>
+<tr><td>KFC</td><td>Tavuk Dünyası</td></tr>
+
+<tr><td>Nestle</td><td>Torku</td></tr>
+<tr><td>Dove</td><td>Duru</td></tr>
+<tr><td>Pantene</td><td>Bioxcin</td></tr>
+
+<tr><td>Nike</td><td>Kinetix</td></tr>
+<tr><td>Adidas</td><td>Lescon</td></tr>
+
+<tr><td>Nescafe</td><td>Kurukahveci Mehmet Efendi</td></tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- BOYKOT BOTU -->
+
+<div id="bot" style="display:none">
+
+<div class="card">
+
+<h2>Boykot Kontrol Botu</h2>
+
+<input type="text" id="botInput" placeholder="Marka ismi yaz...">
+
+<button onclick="checkBrand()">Kontrol Et</button>
+
+<div id="botResult" class="botResult"></div>
+
+</div>
+
+</div>
+
+<!-- HAKKINDA -->
+
+<div id="about" style="display:none">
+
+<div class="card">
+
+<h2>Hakkında</h2>
+
+<p>
+Bu site farkındalık amacıyla hazırlanmıştır.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+<p class="highlight">
+Zulüm karşısında susan dilsiz şeytandır.
+</p>
+
+</div>
+
+<script>
+
+let brands=[
+"coca cola","pepsi","starbucks","mcdonald's","burger king",
+"kfc","domino's pizza","pizza hut",
+"apple","microsoft","google","amazon","intel","hp",
+"dove","pantene","ariel","fairy","nike"
+]
+
+let alternatives={
+"coca cola":"Uludağ Gazoz",
+"pepsi":"Niğde Gazozu",
+"starbucks":"Kahve Dünyası",
+"mcdonald's":"Usta Dönerci",
+"burger king":"Kasap Döner",
+"kfc":"Tavuk Dünyası",
+"dove":"Duru",
+"pantene":"Bioxcin",
+"nike":"Kinetix"
+}
+
+function toggleMenu(){
+
+let menu=document.getElementById("menu")
+
+if(menu.style.left=="0px"){
+menu.style.left="-250px"
+}else{
+menu.style.left="0px"
+}
+
+}
+
+function showPage(page){
+
+document.getElementById("home").style.display="none"
+document.getElementById("boykot").style.display="none"
+document.getElementById("yerli").style.display="none"
+document.getElementById("bot").style.display="none"
+document.getElementById("about").style.display="none"
+
+document.getElementById(page).style.display="block"
+
+}
+
+function searchTable(){
+
+let input=document.getElementById("search").value.toLowerCase()
+let rows=document.querySelectorAll("#boykotTable tbody tr")
+
+rows.forEach(row=>{
+
+let text=row.innerText.toLowerCase()
+row.style.display=text.includes(input)?"":"none"
+
+})
+
+}
+
+function checkBrand(){
+
+let input=document.getElementById("botInput").value.toLowerCase()
+let result=document.getElementById("botResult")
+
+if(brands.includes(input)){
+
+let alt=alternatives[input]
+
+if(alt){
+result.innerHTML="⚠️ Bu marka boykot listesinde.<br>🇹🇷 Türk alternatif: <b>"+alt+"</b>"
+}else{
+result.innerHTML="⚠️ Bu marka boykot listesinde."
+}
+
+}else{
+result.innerHTML="✅ Bu marka listede bulunamadı."
+}
+
+}
+
+</script>
+
+</body>
+</html>
